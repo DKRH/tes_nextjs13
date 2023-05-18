@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Character {
+  id         Int         @id @default(autoincrement())
+  name       String
+  path_id    Int
+  element_id Int
+  origin_id  Int
+  path       DataPath    @relation(fields: [path_id], references: [id])
+  element    DataElement @relation(fields: [element_id], references: [id])
+  origin     DataOrigin  @relation(fields: [origin_id], references: [id])
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  deletedAt  String      @default("")
+}
+
+model DataPath {
+  id        Int         @id @default(autoincrement())
+  name      String
+  desc      String      @db.Text
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  deletedAt String      @default("")
+  Character Character[]
+}
+
+model DataElement {
+  id        Int         @id @default(autoincrement())
+  name      String
+  desc      String      @db.Text
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  deletedAt String      @default("")
+  Character Character[]
+}
+
+model DataOrigin {
+  id        Int         @id @default(autoincrement())
+  name      String
+  desc      String      @db.Text
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  deletedAt String      @default("")
+  Character Character[]
+}

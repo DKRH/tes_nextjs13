@@ -1,0 +1,15 @@
+-- AlterTable
+ALTER TABLE "Character" ALTER COLUMN "deletedAt" SET DEFAULT '',
+ALTER COLUMN "deletedAt" SET DATA TYPE TEXT;
+
+-- AlterTable
+ALTER TABLE "DataElement" ALTER COLUMN "deletedAt" SET DEFAULT '',
+ALTER COLUMN "deletedAt" SET DATA TYPE TEXT;
+
+-- AlterTable
+ALTER TABLE "DataOrigin" ALTER COLUMN "deletedAt" SET DEFAULT '',
+ALTER COLUMN "deletedAt" SET DATA TYPE TEXT;
+
+-- AlterTable
+ALTER TABLE "DataPath" ALTER COLUMN "deletedAt" SET DEFAULT '',
+ALTER COLUMN "deletedAt" SET DATA TYPE TEXT;

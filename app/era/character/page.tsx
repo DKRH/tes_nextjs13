@@ -3,6 +3,10 @@ import AddCharacter from "./addCharacter";
 import DeleteCharacter from "./deleteCharacter";
 import UpdateCharacter from "./updateCharacter";
 
+export const metadata = {
+  title: "Characters",
+};
+
 const getCharacters = async () => {
   const res = await prisma.character.findMany({
     select: {

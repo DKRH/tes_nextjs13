@@ -40,11 +40,15 @@ const UpdateCharacter = ({
   const handleUpdate = async (e: SyntheticEvent) => {
     e.preventDefault();
     console.log(path);
-    await axios.patch(`/api/character/${character.id}`, {
-      name: name,
-      path_id: Number(path),
-      element_id: Number(element),
-      origin_id: Number(origin),
+    await fetch(`/api/character/${character.id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        name: name,
+        path_id: Number(path),
+        element_id: Number(element),
+        origin_id: Number(origin),
+      }),
+      cache: "no-store",
     });
     router.refresh();
     setIsOpen(false);

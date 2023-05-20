@@ -16,7 +16,6 @@ export const PATCH = async (
       path_id: body.path_id,
       element_id: body.element_id,
       origin_id: body.origin_id,
-      deletedAt: "",
     },
   });
   return NextResponse.json(character);

@@ -19,7 +19,10 @@ const DeleteCharacter = ({ character }: { character: Character }) => {
 
   const handleDelete = async (character_id: number) => {
     setIsLoading(true);
-    await axios.delete(`/api/character/${character_id}`);
+    await fetch(`/api/character/${character_id}`, {
+      method: "DELETE",
+      cache: "no-store",
+    });
     setIsLoading(false);
     router.refresh();
     setIsOpen(false);

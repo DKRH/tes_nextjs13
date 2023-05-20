@@ -29,12 +29,15 @@ const addCharacter = ({
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    console.log(path);
-    await axios.post("/api/character", {
-      name: name,
-      path_id: Number(path),
-      element_id: Number(element),
-      origin_id: Number(origin),
+    await fetch("/api/character", {
+      method: "POST",
+      body: JSON.stringify({
+        name: name,
+        path_id: Number(path),
+        element_id: Number(element),
+        origin_id: Number(origin),
+      }),
+      cache: "no-store",
     });
     setName("");
     setPath("");

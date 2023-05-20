@@ -10,6 +10,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Users {
+  id        Int      @id @default(autoincrement())
+  username  String
+  password  String
+  fullname  String
+  role      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt String   @default("")
+}
+
 model Character {
   id         Int         @id @default(autoincrement())
   name       String
@@ -27,7 +38,7 @@ model Character {
 model DataPath {
   id        Int         @id @default(autoincrement())
   name      String
-  desc      String      @db.Text
+  desc      String      @default("") @db.Text
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
   deletedAt String      @default("")
@@ -37,7 +48,7 @@ model DataPath {
 model DataElement {
   id        Int         @id @default(autoincrement())
   name      String
-  desc      String      @db.Text
+  desc      String      @default("") @db.Text
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
   deletedAt String      @default("")
@@ -47,7 +58,7 @@ model DataElement {
 model DataOrigin {
   id        Int         @id @default(autoincrement())
   name      String
-  desc      String      @db.Text
+  desc      String      @default("") @db.Text
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
   deletedAt String      @default("")
